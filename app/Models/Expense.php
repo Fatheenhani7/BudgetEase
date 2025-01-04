@@ -4,6 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+<<<<<<< HEAD
+=======
+use App\Models\User;
+use App\Models\Budget;
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
 
 class Expense extends Model
 {
@@ -12,6 +17,7 @@ class Expense extends Model
     protected $fillable = [
         'user_id',
         'budget_id',
+<<<<<<< HEAD
         'expense_name',
         'amount',
         'date',
@@ -20,6 +26,10 @@ class Expense extends Model
     protected $casts = [
         'amount' => 'decimal:2',
         'date' => 'datetime',
+=======
+        'name',
+        'amount'
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
     ];
 
     public function user()

@@ -16,11 +16,15 @@
                 @endphp
                 <div>
                     <h2 class="font-semibold">{{ $otherUser->username }}</h2>
+<<<<<<< HEAD
                     @if($conversation->product)
                         <p class="text-sm text-gray-500">{{ $conversation->product->title }}</p>
                     @else
                         <p class="text-sm text-gray-500">Support Chat</p>
                     @endif
+=======
+                    <p class="text-sm text-gray-500">{{ $conversation->product->title }}</p>
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
                 </div>
             </div>
 
@@ -31,7 +35,11 @@
                         <div class="max-w-[70%] {{ $message->sender_id === Auth::id() ? 'bg-blue-500 text-white' : 'bg-gray-100' }} rounded-lg px-4 py-2">
                             <p class="text-sm">{{ $message->message }}</p>
                             <p class="text-xs {{ $message->sender_id === Auth::id() ? 'text-blue-100' : 'text-gray-500' }} mt-1">
+<<<<<<< HEAD
                                 {{ $message->created_at->setTimezone('Asia/Colombo')->format('g:i A') }}
+=======
+                                {{ $message->created_at->format('g:i A') }}
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
                             </p>
                         </div>
                     </div>
@@ -40,7 +48,11 @@
 
             <!-- Message Input -->
             <div class="p-4 border-t">
+<<<<<<< HEAD
                 <form action="{{ route('chat.messages.store', $conversation) }}" method="POST" class="flex space-x-4">
+=======
+                <form action="{{ route('chat.message', $conversation) }}" method="POST" class="flex space-x-4">
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
                     @csrf
                     <input type="text" 
                            name="message" 

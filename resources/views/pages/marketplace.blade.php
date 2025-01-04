@@ -22,6 +22,7 @@
     </div>
 
     <!-- Filters and Search -->
+<<<<<<< HEAD
     <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
         <!-- Search Bar -->
         <div class="w-full md:w-auto flex-1 max-w-xl">
@@ -61,6 +62,10 @@
 
         <!-- Filters -->
         <div class="flex gap-4 items-center">
+=======
+    <div class="flex justify-between items-center mb-6">
+        <div class="flex gap-4">
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
             <div>
                 <select name="location" class="rounded-md border-gray-300" onchange="window.location.href=this.value">
                     <option value="{{ route('marketplace.index', array_merge(request()->except('location'), ['location' => 'all'])) }}"
@@ -143,4 +148,8 @@
         {{ $products->links() }}
     </div>
 </div>
+<<<<<<< HEAD
 @endsection
+=======
+@endsection
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb

@@ -10,7 +10,11 @@
                     <h1 class="text-2xl font-bold mb-2">{{ $seller->username }}'s Products</h1>
                     <p class="text-gray-600">Member since {{ $seller->created_at->format('M Y') }}</p>
                 </div>
+<<<<<<< HEAD
                 @if(Auth::check() && Auth::id() !== $seller->id)
+=======
+                @if(Auth::check() && Auth::user()->email !== $seller->email)
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
                     <form action="{{ route('chat.store', ['product' => $products->first()]) }}" method="POST">
                         @csrf
                         <button type="submit" 

@@ -19,25 +19,37 @@
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-4">
                                 <div class="flex-shrink-0">
+<<<<<<< HEAD
                                     @if($conversation->product && $conversation->product->images->where('is_primary', true)->first())
+=======
+                                    @if($conversation->product->images->where('is_primary', true)->first())
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
                                         <img src="{{ asset('storage/' . $conversation->product->images->where('is_primary', true)->first()->image_url) }}" 
                                              alt="Product image"
                                              class="w-12 h-12 rounded-lg object-cover">
                                     @else
+<<<<<<< HEAD
                                         <div class="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center">
                                             <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
                                             </svg>
                                         </div>
+=======
+                                        <div class="w-12 h-12 bg-gray-200 rounded-lg"></div>
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
                                     @endif
                                 </div>
                                 <div>
                                     <h3 class="font-medium">{{ $otherUser->username }}</h3>
+<<<<<<< HEAD
                                     @if($conversation->product)
                                         <p class="text-sm text-gray-500">{{ $conversation->product->title }}</p>
                                     @else
                                         <p class="text-sm text-gray-500">Support Chat</p>
                                     @endif
+=======
+                                    <p class="text-sm text-gray-500">{{ $conversation->product->title }}</p>
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
                                     @if($conversation->lastMessage)
                                         <p class="text-sm text-gray-600 mt-1">
                                             {{ Str::limit($conversation->lastMessage->message, 50) }}

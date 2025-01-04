@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <meta name="csrf-token" content="{{ csrf_token() }}">
+=======
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
     <title>BudgetEase</title>
     
     <!-- Scripts -->
@@ -51,6 +54,13 @@
                                        class="inline-flex items-center px-1 text-white hover:text-gray-200 {{ request()->routeIs('marketplace.*') ? 'border-b-2 border-white' : '' }}">
                                         Marketplace
                                     </a>
+<<<<<<< HEAD
+=======
+                                    <a href="{{ route('chat.index') }}" 
+                                       class="inline-flex items-center px-1 text-white hover:text-gray-200 {{ request()->routeIs('chat.*') ? 'border-b-2 border-white' : '' }}">
+                                        Messages
+                                    </a>
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
                                 </div>
                             </div>
                         @endauth
@@ -64,6 +74,7 @@
                         <a href="{{ route('register') }}" class="ml-4 text-sm text-white hover:text-gray-200">Register</a>
                     @else
                         <div class="flex items-center space-x-4">
+<<<<<<< HEAD
                             @if(Auth::user()->email === 'adminb@gmail.com')
                                 <a href="{{ route('chat.index') }}" 
                                    class="text-sm font-medium text-white hover:text-gray-200 relative mr-4">
@@ -88,6 +99,11 @@
                                         {{ $reportedProductsCount }}
                                     </span>
                                 @endif
+=======
+                            <a href="{{ route('profile.index') }}" 
+                               class="text-sm font-medium text-white hover:text-gray-200">
+                                {{ Auth::user()->username }}
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
                             </a>
                             <form method="POST" action="{{ route('logout') }}" class="inline-flex">
                                 @csrf
@@ -126,6 +142,13 @@
                        class="block pl-3 pr-4 py-2 text-white hover:text-gray-200 hover:bg-custom-navy {{ request()->routeIs('marketplace.*') ? 'bg-custom-navy' : '' }}">
                         Marketplace
                     </a>
+<<<<<<< HEAD
+=======
+                    <a href="{{ route('chat.index') }}" 
+                       class="block pl-3 pr-4 py-2 text-white hover:text-gray-200 hover:bg-custom-navy {{ request()->routeIs('chat.*') ? 'bg-custom-navy' : '' }}">
+                        Messages
+                    </a>
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
                     <div class="pt-4 pb-3 border-t border-gray-600">
                         <div class="px-4">
                             <a href="{{ route('profile.index') }}" class="block text-base font-medium text-white hover:text-gray-200">
@@ -155,6 +178,7 @@
 
     <!-- Page Content -->
     <main>
+<<<<<<< HEAD
         @auth
             @php
                 $reportNotification = Session::get('report_notification_' . Auth::id());
@@ -201,6 +225,8 @@
                 </div>
             @endif
         @endauth
+=======
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
         @yield('content')
     </main>
 

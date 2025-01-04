@@ -4,12 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+<<<<<<< HEAD
 use App\Models\Conversation;
 use App\Models\Message;
 use App\Models\ProductImage;
 use App\Models\ProductRating;
 use App\Models\ProductReport;
 use App\Models\UserInfo;
+=======
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
 
 class Product extends Model
 {
@@ -22,6 +25,7 @@ class Product extends Model
         'price',
         'category',
         'condition_status',
+<<<<<<< HEAD
         'location',
         'average_rating',
         'rating_count',
@@ -52,6 +56,11 @@ class Product extends Model
         });
     }
 
+=======
+        'location'
+    ];
+
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
     public function seller()
     {
         return $this->belongsTo(UserInfo::class, 'seller_id');
@@ -67,6 +76,7 @@ class Product extends Model
         return $this->hasOne(ProductImage::class)->where('is_primary', true);
     }
 
+<<<<<<< HEAD
     public function conversations()
     {
         return $this->hasMany(Conversation::class);
@@ -80,12 +90,23 @@ class Product extends Model
     public function reports()
     {
         return $this->hasMany(ProductReport::class);
+=======
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
+
+    public function transactions()
+    {
+        return $this->hasMany(MarketplaceTransaction::class);
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
     }
 
     public function getPrimaryImageUrlAttribute()
     {
         return $this->primaryImage?->image_url ?? 'images/placeholder.jpg';
     }
+<<<<<<< HEAD
 
     public function getSellerVerificationStatusAttribute()
     {
@@ -112,4 +133,6 @@ class Product extends Model
         }
         return round($ratings->avg('rating'), 1);
     }
+=======
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
 }

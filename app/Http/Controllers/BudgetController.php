@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Budget;
+<<<<<<< HEAD
 use App\Models\Income;
 use App\Models\Expense;
 use Illuminate\Http\Request;
@@ -110,10 +111,23 @@ class BudgetController extends Controller
         }
 
         return $suggestedAmounts;
+=======
+use App\Models\Expense;
+use App\Models\Income;
+use Illuminate\Http\Request;
+
+class BudgetController extends Controller
+{
+    public function index(Request $request)
+    {
+        $budgets = $request->user()->budgets()->with('expenses')->get();
+        return response()->json($budgets);
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
     }
 
     public function store(Request $request)
     {
+<<<<<<< HEAD
         try {
             $request->validate([
                 'category' => 'required|string|max:100',
@@ -371,14 +385,76 @@ class BudgetController extends Controller
             Log::error('Error deleting expense: ' . $e->getMessage());
             return redirect()->back()->with('error', 'Failed to delete expense. Please try again.');
         }
+=======
+        $request->validate([
+            'category' => 'required|string|max:255',
+            'amount' => 'required|numeric|min:0',
+        ]);
+
+        $budget = $request->user()->budgets()->create($request->all());
+        return response()->json($budget, 201);
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
     }
 
     public function show(Budget $budget)
     {
+<<<<<<< HEAD
         if ($budget->user_id !== Auth::id()) {
             abort(403, 'Unauthorized action.');
         }
 
         return view('budgets.show', compact('budget'));
+=======
+        $this->authorize('view', $budget);
+        return response()->json($budget->load('expenses'));
+    }
+
+    public function update(Request $request, Budget $budget)
+    {
+        $this->authorize('update', $budget);
+        
+        $request->validate([
+            'category' => 'required|string|max:255',
+            'amount' => 'required|numeric|min:0',
+        ]);
+
+        $budget->update($request->all());
+        return response()->json($budget);
+    }
+
+    public function destroy(Budget $budget)
+    {
+        $this->authorize('delete', $budget);
+        $budget->delete();
+        return response()->json(null, 204);
+    }
+
+    public function dashboard(Request $request)
+    {
+        $user = $request->user();
+        
+        $totalIncome = $user->incomes()->sum('amount');
+        $totalExpenses = $user->expenses()->sum('amount');
+        $budgets = $user->budgets()->with('expenses')->get();
+        
+        $budgetSummary = $budgets->map(function ($budget) {
+            $spent = $budget->expenses->sum('amount');
+            return [
+                'id' => $budget->id,
+                'category' => $budget->category,
+                'budget_amount' => $budget->amount,
+                'spent' => $spent,
+                'remaining' => $budget->amount - $spent,
+                'percentage_used' => $budget->amount > 0 ? ($spent / $budget->amount) * 100 : 0
+            ];
+        });
+
+        return response()->json([
+            'total_income' => $totalIncome,
+            'total_expenses' => $totalExpenses,
+            'savings' => $totalIncome - $totalExpenses,
+            'budget_summary' => $budgetSummary
+        ]);
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
     }
 }

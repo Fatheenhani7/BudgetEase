@@ -43,6 +43,7 @@ class ChatController extends Controller
         return view('pages.chat.show', compact('conversation'));
     }
 
+<<<<<<< HEAD
     public function store(Product $product)
     {
         $user = Auth::user();
@@ -113,6 +114,11 @@ class ChatController extends Controller
         ]);
 
         $product = Product::findOrFail($request->product_id);
+=======
+    public function store(Request $request, Product $product)
+    {
+        $user = UserInfo::where('email', Auth::user()->email)->first();
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
         
         // Check if conversation already exists
         $conversation = Conversation::where('product_id', $product->id)
@@ -128,6 +134,7 @@ class ChatController extends Controller
             ]);
         }
 
+<<<<<<< HEAD
         // Create the initial message
         Message::create([
             'conversation_id' => $conversation->id,
@@ -135,14 +142,22 @@ class ChatController extends Controller
             'message' => $request->message,
         ]);
 
+=======
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
         return redirect()->route('chat.show', $conversation);
     }
 
     public function sendMessage(Request $request, Conversation $conversation)
     {
+<<<<<<< HEAD
         $user = Auth::user();
         
         // Authorize that user is part of the conversation
+=======
+        $user = UserInfo::where('email', Auth::user()->email)->first();
+        
+        // Validate user is part of conversation
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
         if ($conversation->buyer_id !== $user->id && $conversation->seller_id !== $user->id) {
             abort(403);
         }
@@ -151,12 +166,17 @@ class ChatController extends Controller
             'message' => 'required|string|max:1000',
         ]);
 
+<<<<<<< HEAD
         Message::create([
+=======
+        $message = Message::create([
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
             'conversation_id' => $conversation->id,
             'sender_id' => $user->id,
             'message' => $request->message,
         ]);
 
+<<<<<<< HEAD
         return redirect()->back();
     }
 
@@ -193,5 +213,8 @@ class ChatController extends Controller
         }
 
         return redirect()->route('chat.show', $conversation);
+=======
+        return back();
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
     }
 }

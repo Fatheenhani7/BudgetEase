@@ -4,7 +4,10 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Schema;
+=======
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
 
 class MarketplaceCategorySeeder extends Seeder
 {
@@ -13,6 +16,7 @@ class MarketplaceCategorySeeder extends Seeder
      */
     public function run(): void
     {
+<<<<<<< HEAD
         // Disable foreign key checks
         Schema::disableForeignKeyConstraints();
 
@@ -21,6 +25,24 @@ class MarketplaceCategorySeeder extends Seeder
 
         // Insert the furniture categories
         $categories = [
+=======
+        // First, delete existing categories that are not in our new list
+        $keepCategories = [
+            'Living Room',
+            'Bedroom',
+            'Dining Room',
+            'Office',
+            'Outdoor',
+            'Other'
+        ];
+        
+        DB::table('marketplace_categories')
+            ->whereNotIn('name', $keepCategories)
+            ->delete();
+
+        // Insert or update the furniture categories
+        foreach ([
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
             [
                 'name' => 'Living Room',
                 'description' => 'Furniture for the living room, such as sofas, coffee tables, and TV stands'
@@ -45,16 +67,23 @@ class MarketplaceCategorySeeder extends Seeder
                 'name' => 'Other',
                 'description' => 'Miscellaneous furniture items'
             ]
+<<<<<<< HEAD
         ];
 
         foreach ($categories as $category) {
+=======
+        ] as $category) {
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
             DB::table('marketplace_categories')->updateOrInsert(
                 ['name' => $category['name']],
                 $category
             );
         }
+<<<<<<< HEAD
 
         // Re-enable foreign key checks
         Schema::enableForeignKeyConstraints();
+=======
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
     }
 }

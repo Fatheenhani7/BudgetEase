@@ -4,7 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+<<<<<<< HEAD
 use App\Models\UserInfo;
+=======
+use App\Models\User;
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
 use App\Models\Expense;
 
 class Budget extends Model
@@ -13,6 +17,7 @@ class Budget extends Model
 
     protected $fillable = [
         'user_id',
+<<<<<<< HEAD
         'category_name',
         'amount',
         'amount_spent'
@@ -22,17 +27,26 @@ class Budget extends Model
         'amount' => 'decimal:2',
         'amount_spent' => 'decimal:2',
         'date_created' => 'datetime'
+=======
+        'category',
+        'amount'
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
     ];
 
     public function user()
     {
+<<<<<<< HEAD
         return $this->belongsTo(UserInfo::class);
+=======
+        return $this->belongsTo(User::class);
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
     }
 
     public function expenses()
     {
         return $this->hasMany(Expense::class);
     }
+<<<<<<< HEAD
 
     public function getRemainingAmountAttribute()
     {
@@ -46,4 +60,6 @@ class Budget extends Model
         }
         return 0;
     }
+=======
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
 }

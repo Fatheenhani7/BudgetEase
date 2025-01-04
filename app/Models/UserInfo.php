@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+<<<<<<< HEAD
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Budget;
@@ -17,18 +18,37 @@ class UserInfo extends Authenticatable
     use HasFactory;
 
     protected $table = 'users_info';
+=======
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
+use App\Models\UserProfile;
+
+class UserInfo extends Authenticatable
+{
+    use HasApiTokens, Notifiable;
+
+    protected $table = 'users_info';
+    
+    // Disable Laravel's timestamp fields
+    public $timestamps = false;
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
 
     protected $fillable = [
         'username',
         'email',
         'password',
+<<<<<<< HEAD
         'is_admin',
         'is_verified_seller',
         'verification_status'
+=======
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
     ];
 
     protected $hidden = [
         'password',
+<<<<<<< HEAD
         'remember_token',
     ];
 
@@ -63,10 +83,22 @@ class UserInfo extends Authenticatable
         return $this->expenses()->sum('amount');
     }
 
+=======
+    ];
+
+    protected $casts = [
+        'created_at' => 'datetime',
+    ];
+
+    /**
+     * Get the user's profile.
+     */
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
     public function profile()
     {
         return $this->hasOne(UserProfile::class, 'user_id');
     }
+<<<<<<< HEAD
 
     public function products()
     {
@@ -120,4 +152,6 @@ class UserInfo extends Authenticatable
         ->where('is_read', false)
         ->count();
     }
+=======
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
 }

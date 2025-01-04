@@ -45,6 +45,7 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
+<<<<<<< HEAD
         if (Auth::attempt($request->only('email', 'password'))) {
             $request->session()->regenerate();
 
@@ -59,6 +60,15 @@ class AuthController extends Controller
         return back()->withErrors([
             'email' => 'The provided credentials are incorrect.',
         ]);
+=======
+        if (!Auth::attempt($request->only('email', 'password'))) {
+            return back()->withErrors([
+                'email' => 'The provided credentials are incorrect.',
+            ]);
+        }
+
+        return redirect()->route('home');
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
     }
 
     public function logout(Request $request)
@@ -66,7 +76,11 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+<<<<<<< HEAD
         return redirect('/');
+=======
+        return redirect()->route('login');
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
     }
 
     public function user(Request $request)

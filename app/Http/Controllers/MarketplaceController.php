@@ -26,6 +26,7 @@ class MarketplaceController extends Controller
             $query->where('location', $request->location);
         }
 
+<<<<<<< HEAD
         // Apply search filter
         if ($request->has('search') && !empty($request->search)) {
             $search = $request->search;
@@ -36,6 +37,8 @@ class MarketplaceController extends Controller
             });
         }
 
+=======
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
         // Apply sorting
         if ($request->has('sort')) {
             switch ($request->sort) {
@@ -55,7 +58,11 @@ class MarketplaceController extends Controller
             $query->latest();
         }
 
+<<<<<<< HEAD
         $products = $query->paginate(12)->withQueryString();
+=======
+        $products = $query->paginate(12);
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
         $categories = MarketplaceCategory::all();
 
         return view('pages.marketplace', compact('products', 'categories'));
@@ -74,7 +81,10 @@ class MarketplaceController extends Controller
             'description' => 'required|string',
             'price' => 'required|numeric|min:0',
             'category' => 'required|exists:marketplace_categories,name',
+<<<<<<< HEAD
             'condition_status' => 'required|string|max:20',
+=======
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
             'location' => 'required|string',
             'images.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
@@ -85,7 +95,11 @@ class MarketplaceController extends Controller
             'description' => $request->description,
             'price' => $request->price,
             'category' => $request->category,
+<<<<<<< HEAD
             'condition_status' => $request->condition_status,
+=======
+            'condition_status' => 'Used',
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
             'location' => $request->location
         ]);
 
@@ -109,6 +123,7 @@ class MarketplaceController extends Controller
 
     public function show(Product $product)
     {
+<<<<<<< HEAD
         // Get similar products in the same category, excluding the current product
         $similarProducts = Product::where('category', $product->category)
             ->where('id', '!=', $product->id)
@@ -121,6 +136,10 @@ class MarketplaceController extends Controller
             'product' => $product->load(['seller', 'images']),
             'similarProducts' => $similarProducts
         ]);
+=======
+        $product->load(['seller', 'images']);
+        return view('pages.product-details', compact('product'));
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
     }
 
     public function edit(Product $product)
@@ -202,15 +221,23 @@ class MarketplaceController extends Controller
         return redirect()->route('profile.index')->with('success', 'Product deleted successfully.');
     }
 
+<<<<<<< HEAD
     public function sellerProducts($sellerId)
     {
         $seller = UserInfo::findOrFail($sellerId);
         $products = Product::where('seller_id', $sellerId)
             ->with(['images'])
+=======
+    public function sellerProducts(UserInfo $seller)
+    {
+        $products = Product::where('seller_id', $seller->id)
+            ->with(['images', 'seller'])
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
             ->latest()
             ->paginate(12);
 
         return view('pages.marketplace.seller-products', [
+<<<<<<< HEAD
             'seller' => $seller,
             'products' => $products
         ]);
@@ -242,4 +269,10 @@ class MarketplaceController extends Controller
 
         return view('pages.marketplace', compact('products', 'categories'));
     }
+=======
+            'products' => $products,
+            'seller' => $seller
+        ]);
+    }
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
 }

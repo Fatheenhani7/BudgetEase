@@ -3,10 +3,13 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Auth;
 use App\Models\ProductReport;
 use App\Models\UserInfo;
+=======
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+<<<<<<< HEAD
         View::composer('*', function ($view) {
             if (Auth::check()) {
                 $user = Auth::user();
@@ -43,5 +47,8 @@ class AppServiceProvider extends ServiceProvider
                 }
             }
         });
+=======
+        //
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
     }
 }

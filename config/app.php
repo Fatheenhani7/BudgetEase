@@ -60,12 +60,21 @@ return [
     |--------------------------------------------------------------------------
     |
     | Here you may specify the default timezone for your application, which
+<<<<<<< HEAD
     | will be used by the PHP date and date-time functions. We have gone
     | ahead and set this to a sensible default for you out of the box.
     |
     */
 
     'timezone' => 'Asia/Colombo',
+=======
+    | will be used by the PHP date and date-time functions. The timezone
+    | is set to "UTC" by default as it is suitable for most use cases.
+    |
+    */
+
+    'timezone' => env('APP_TIMEZONE', 'UTC'),
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
 
     /*
     |--------------------------------------------------------------------------

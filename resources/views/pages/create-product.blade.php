@@ -36,11 +36,15 @@
             <div>
                 <label class="block text-sm font-medium text-gray-700">Condition</label>
                 <select name="condition_status" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+<<<<<<< HEAD
                     <option value="">Select Condition</option>
                     <option value="New">New</option>
                     <option value="Like New">Like New</option>
                     <option value="Used">Used</option>
                     <option value="Fair">Fair</option>
+=======
+                    <option value="Used">Used</option>
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
                 </select>
             </div>
 

@@ -13,13 +13,19 @@
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
+<<<<<<< HEAD
         "laravel/dusk": "^8.2",
+=======
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
         "laravel/pail": "^1.1",
         "laravel/pint": "^1.13",
         "laravel/sail": "^1.26",
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.1",
+<<<<<<< HEAD
         "pestphp/pest": "^3.7",
+=======
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
         "phpunit/phpunit": "^11.0.1"
     },
     "autoload": {
@@ -35,7 +41,10 @@
         }
     },
     "scripts": {
+<<<<<<< HEAD
         "test": "phpunit",
+=======
+>>>>>>> 9f54a7f70537ac620d030b65705c3379f4ec70bb
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
